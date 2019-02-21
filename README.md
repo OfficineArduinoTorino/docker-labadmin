@@ -68,3 +68,21 @@ Once the setup is done to start the project you need to run
 `docker-compose up`
 
 and then see your LabAdmin installation at [http://0.0.0.0:8000/labadmin/admin/](http://0.0.0.0:8000/labadmin/admin/)
+
+## Upload to Docker Hub for Hass.io
+
+To use labadmin in [Hass.io](https://www.home-assistant.io/hassio/) we need to prepare a Django + labadmin container. This repo is meant for that, and can be used both with docker-compose and also inside Hass.io.
+
+Remember to run all these commands from a Raspberry Pi if you want to run Hass.io in a RPi.
+
+Login to Docker Hub:
+`docker login --username=yourhubusername --email=youremail@company.com`
+
+then, build the image:
+`docker build .`
+
+tag the resulting image:
+`docker tag __hashofbuildimage__ officineinnesto/labadmin:0.1.1`
+
+and push on Docker Hub:
+`docker push officineinnesto/labadmin:0.1.1`
