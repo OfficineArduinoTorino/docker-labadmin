@@ -11,6 +11,12 @@ ADMIN_NAME=$(jq --raw-output ".admin_name" $CONFIG_PATH)
 ADMIN_EMAIL=$(jq --raw-output ".admin_email" $CONFIG_PATH)
 ADMIN_PASS=$(jq --raw-output ".admin_pass" $CONFIG_PATH)
 
+DB_HOST=$(echo ${DB_HOST} | sed "s/'/\\\'/g")
+DB_USERNAME=$(echo ${DB_USERNAME} | sed "s/'/\\\'/g")
+DB_PASSWORD=$(echo ${DB_PASSWORD} | sed "s/'/\\\'/g")
+DB_NAME=$(echo ${DB_NAME} | sed "s/'/\\\'/g")
+SECRET_KEY=$(echo ${SECRET_KEY} | sed "s/'/\\\'/g")
+
 sed -i "s/.*# DB_HOST/'HOST': '${DB_HOST}', # DB_HOST/" djangolabadmin/settings.py
 sed -i "s/.*# DB_USERNAME/'USER': '${DB_USERNAME}', # DB_USERNAME/" djangolabadmin/settings.py
 sed -i "s/.*# DB_PASSWORD/'PASSWORD': '${DB_PASSWORD}', # DB_PASSWORD/" djangolabadmin/settings.py
