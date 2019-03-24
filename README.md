@@ -82,7 +82,7 @@ then, build the image:
 `docker build .`
 
 tag the resulting image:
-`docker tag __hashofbuildimage__ officineinnesto/labadmin:0.1.1`
+`docker tag __hashofbuildimage__ officine/labadmin:0.1.1`
 
 and push on Docker Hub:
-`docker push officineinnesto/labadmin:0.1.1`
+`docker push officine/labadmin:0.1.1`
