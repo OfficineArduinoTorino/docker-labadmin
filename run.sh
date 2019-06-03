@@ -15,7 +15,7 @@ DB_HOST=$(echo ${DB_HOST} | sed "s/'/\\\'/g")
 DB_USERNAME=$(echo ${DB_USERNAME} | sed "s/'/\\\'/g")
 DB_PASSWORD=$(echo ${DB_PASSWORD} | sed "s/'/\\\'/g")
 DB_NAME=$(echo ${DB_NAME} | sed "s/'/\\\'/g")
-SECRET_KEY=$(echo ${SECRET_KEY} | sed "s/'/\\\'/g")
+SECRET_KEY=$(echo ${SECRET_KEY} | sed -r "s/['\&\^\"\\%]//g")
 
 sed -i "s/.*# DB_HOST/'HOST': '${DB_HOST}', # DB_HOST/" djangolabadmin/settings.py
 sed -i "s/.*# DB_USERNAME/'USER': '${DB_USERNAME}', # DB_USERNAME/" djangolabadmin/settings.py
